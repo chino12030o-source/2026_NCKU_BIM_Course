@@ -1,37 +1,47 @@
 :root {
-  /* Mucha / Art Nouveau Color Palette */
-  --mucha-parchment: #faf6ed;
-  --mucha-card-bg: #fffdf9;
-  --mucha-panel-bg: #f5eedf;
-  --mucha-gold: #c29953;
-  --mucha-gold-light: #dfba73;
-  --mucha-gold-dim: #ebd8af;
-  --mucha-gold-border: #d4b26f;
-  --mucha-gold-shadow: rgba(194, 153, 83, 0.16);
+  /* Medieval Alchemist & Potion Atelier Color System */
+  --alch-bg: #090e0b;
+  --alch-surface: #101712;
+  --alch-surface-card: #152019;
+  --alch-surface-hover: #1c2b22;
+  --alch-surface-active: #22352a;
 
-  --mucha-sage: #4a6b53;
-  --mucha-sage-light: #eef5ef;
-  --mucha-sage-border: #b8d4be;
+  /* Yellow-Green Potion Glow (螢光黃綠 / 藥水光輝) */
+  --potion-green: #bef264;
+  --potion-green-bright: #d9f99d;
+  --potion-green-glow: #a3e635;
+  --potion-green-deep: #4d7c0f;
+  --potion-aura: rgba(163, 230, 53, 0.18);
+  --potion-aura-strong: rgba(190, 242, 100, 0.35);
 
-  --mucha-terracotta: #a8543d;
-  --mucha-terracotta-light: #fbeee9;
-  --mucha-terracotta-border: #f2cbbe;
+  /* Medieval Runic Gold & Brass (中世紀古金 / 煉金黃銅) */
+  --gold-runic: #d4af37;
+  --gold-bright: #fde047;
+  --gold-dim: #997b24;
+  --gold-border: #5c4714;
+  --gold-shadow: rgba(212, 175, 55, 0.15);
 
-  --mucha-amber: #b0782a;
-  --mucha-amber-light: #fef7ea;
-  --mucha-amber-border: #fae0b5;
+  /* Grimoire Parchment Text */
+  --text-parchment: #f2ebd9;
+  --text-parchment-muted: #a39985;
+  --text-parchment-dim: #716856;
 
-  --mucha-text: #2c241c;
-  --mucha-text-muted: #6e6153;
-  --mucha-text-light: #9e8f7f;
+  /* Border Sigils */
+  --border-grimoire: #27372d;
+  --border-gold-accent: #806323;
 
-  --font-serif: "Playfair Display", "Noto Serif TC", "Songti TC", Georgia, serif;
-  --font-display: "Cinzel", "Noto Serif TC", serif;
-  --font-body: "Noto Serif TC", "PingFang TC", Georgia, serif;
+  /* Status Colors */
+  --status-raw: #facc15;
+  --status-distill: #a3e635;
+  --status-transmute: #38bdf8;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --font-decorative: "Cinzel Decorative", "Cinzel", "Noto Serif TC", serif;
+  --font-runic: "Cinzel", "Noto Serif TC", serif;
+  --font-grimoire: "Noto Serif TC", Georgia, serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
 }
 
 * {
@@ -41,31 +51,34 @@
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--mucha-parchment);
-  color: var(--mucha-text);
+  font-family: var(--font-grimoire);
+  background-color: var(--alch-bg);
+  color: var(--text-parchment);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(194, 153, 83, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(74, 107, 83, 0.04) 0%, transparent 40%);
+    radial-gradient(circle at 15% 15%, rgba(163, 230, 53, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(16, 23, 18, 0.8) 0%, #090e0b 100%);
 }
 
-/* Scrollbar */
+/* Runic Glowing Scrollbars */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--mucha-parchment);
+  background: var(--alch-bg);
+  border-left: 1px solid var(--border-grimoire);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--mucha-gold-dim);
+  background: #283a2f;
   border-radius: 999px;
-  border: 1px solid var(--mucha-gold-border);
+  border: 1px solid var(--gold-border);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--mucha-gold);
+  background: var(--potion-green-deep);
+  box-shadow: 0 0 8px var(--potion-green-glow);
 }
 
 /* App Shell */
@@ -74,40 +87,43 @@ body {
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  background: var(--mucha-parchment);
+  background: var(--alch-bg);
+  position: relative;
 }
 
-/* Top Navbar */
+/* Header: Alchemist Atelier */
 .top-navbar {
-  height: 72px;
-  background: linear-gradient(180deg, #fffefb 0%, #f7f1e4 100%);
-  border-bottom: 2px solid var(--mucha-gold-border);
-  box-shadow: 0 4px 18px var(--mucha-gold-shadow);
+  height: 74px;
+  background: linear-gradient(180deg, #141f17 0%, #0d1510 100%);
+  border-bottom: 2px solid var(--gold-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(163, 230, 53, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
   flex-shrink: 0;
   position: relative;
-  z-index: 20;
+  z-index: 30;
 }
 
-/* Bottom decorative border accent on header */
+/* Runic border accent */
 .top-navbar::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -3px;
   left: 0;
   right: 0;
   height: 2px;
   background: repeating-linear-gradient(
     90deg,
-    var(--mucha-gold) 0,
-    var(--mucha-gold) 10px,
-    transparent 10px,
-    transparent 14px
+    var(--gold-runic) 0,
+    var(--gold-runic) 8px,
+    var(--potion-green-glow) 8px,
+    var(--potion-green-glow) 12px,
+    transparent 12px,
+    transparent 20px
   );
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .brand {
@@ -116,49 +132,51 @@ body {
   gap: 16px;
 }
 
-.brand-icon-wrapper {
-  width: 44px;
-  height: 44px;
+.brand-sigil {
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: radial-gradient(circle, #f7ecd7 20%, #e6cb9b 100%);
-  border: 2px solid var(--mucha-gold);
-  box-shadow: 0 2px 8px rgba(194, 153, 83, 0.3), inset 0 0 6px rgba(255, 255, 255, 0.6);
+  background: radial-gradient(circle, #213326 20%, #101a13 100%);
+  border: 2px solid var(--gold-runic);
+  box-shadow: 0 0 14px var(--potion-aura-strong), inset 0 0 8px rgba(163, 230, 53, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #5c431b;
+  color: var(--potion-green);
   position: relative;
 }
 
 .brand-title {
-  font-family: var(--font-display);
-  font-size: 19px;
+  font-family: var(--font-decorative);
+  font-size: 20px;
   font-weight: 700;
-  color: #382a1b;
-  letter-spacing: 0.8px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #fff9ea;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .brand-subtitle {
   font-size: 11.5px;
-  color: var(--mucha-sage);
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  color: var(--potion-green);
+  font-family: var(--font-runic);
+  letter-spacing: 1px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  text-shadow: 0 0 8px rgba(163, 230, 53, 0.3);
 }
 
 .brand-badge {
-  font-family: var(--font-display);
-  font-size: 10.5px;
-  background: var(--mucha-sage-light);
-  color: var(--mucha-sage);
-  padding: 2px 8px;
+  font-family: var(--font-runic);
+  font-size: 10px;
+  background: rgba(163, 230, 53, 0.12);
+  color: var(--potion-green);
+  padding: 2px 9px;
   border-radius: 999px;
-  border: 1px solid var(--mucha-sage-border);
-  letter-spacing: 0.5px;
-  font-weight: 600;
+  border: 1px solid var(--potion-green-glow);
+  box-shadow: 0 0 8px var(--potion-aura);
+  letter-spacing: 0.8px;
+  font-weight: 700;
 }
 
 .nav-actions {
@@ -170,23 +188,30 @@ body {
 .status-indicator {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   font-size: 12px;
-  color: var(--mucha-sage);
-  background: #f1f7f2;
-  border: 1px solid var(--mucha-sage-border);
-  padding: 5px 14px;
+  font-family: var(--font-runic);
+  color: var(--potion-green);
+  background: rgba(16, 26, 18, 0.9);
+  border: 1px solid var(--potion-green-deep);
+  padding: 6px 14px;
   border-radius: 999px;
-  font-weight: 600;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: inset 0 0 8px rgba(163, 230, 53, 0.15), 0 0 10px rgba(163, 230, 53, 0.1);
+  letter-spacing: 0.5px;
 }
 
 .status-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #3b7c4d;
-  box-shadow: 0 0 0 3px rgba(59, 124, 77, 0.2);
+  background: var(--potion-green);
+  box-shadow: 0 0 8px var(--potion-green), 0 0 14px var(--potion-green-glow);
+  animation: pulsePotion 2s infinite ease-in-out;
+}
+
+@keyframes pulsePotion {
+  0%, 100% { opacity: 0.8; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px var(--potion-green-bright); }
 }
 
 /* Main Layout */
@@ -194,28 +219,29 @@ body {
   display: flex;
   flex: 1;
   overflow: hidden;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 390px;
-  background: linear-gradient(180deg, #fdfbf7 0%, #f6f0e3 100%);
-  border-right: 2px solid var(--mucha-gold-border);
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  box-shadow: 4px 0 16px rgba(194, 153, 83, 0.05);
   position: relative;
 }
 
-.sidebar-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--mucha-gold-border);
+/* Sidebar: Grimoire Index */
+.sidebar {
+  width: 400px;
+  background: linear-gradient(180deg, #101813 0%, #0b110d 100%);
+  border-right: 2px solid var(--gold-border);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-grimoire);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: rgba(13, 20, 15, 0.85);
 }
 
 .search-box {
@@ -225,21 +251,21 @@ body {
 
 .search-input {
   width: 100%;
-  padding: 8px 12px 8px 36px;
+  padding: 9px 12px 9px 38px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--mucha-gold-border);
+  border: 1px solid var(--border-grimoire);
   font-size: 13px;
-  font-family: var(--font-body);
-  background: #ffffff;
-  color: var(--mucha-text);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: all 0.2s ease;
+  font-family: var(--font-grimoire);
+  background: #090e0b;
+  color: var(--text-parchment);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.25s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--mucha-gold);
-  box-shadow: 0 0 0 3px var(--mucha-gold-shadow);
+  border-color: var(--potion-green-glow);
+  box-shadow: 0 0 12px var(--potion-aura-strong), inset 0 0 6px rgba(163, 230, 53, 0.2);
 }
 
 .search-icon {
@@ -247,28 +273,28 @@ body {
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--mucha-gold);
+  color: var(--gold-runic);
 }
 
-/* Mucha Filter Tabs */
+/* Runic Filter Tabs */
 .filter-tabs {
   display: flex;
-  background: #eee5d3;
+  background: #0b120d;
   padding: 3px;
   border-radius: var(--radius-md);
   gap: 2px;
-  border: 1px solid var(--mucha-gold-dim);
+  border: 1px solid var(--border-grimoire);
 }
 
 .filter-tab {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 6px 4px;
+  padding: 7px 4px;
   font-size: 12px;
-  font-family: var(--font-serif);
-  font-weight: 500;
-  color: var(--mucha-text-muted);
+  font-family: var(--font-runic);
+  font-weight: 600;
+  color: var(--text-parchment-muted);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -279,26 +305,27 @@ body {
 }
 
 .filter-tab.active {
-  background: #ffffff;
-  color: var(--mucha-text);
-  font-weight: 700;
-  box-shadow: 0 2px 6px rgba(184, 144, 71, 0.18);
-  border: 1px solid var(--mucha-gold-border);
+  background: linear-gradient(180deg, #1c2b20 0%, #131d16 100%);
+  color: var(--potion-green);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 0 6px var(--potion-aura);
+  border: 1px solid var(--gold-border);
+  text-shadow: 0 0 8px var(--potion-aura);
 }
 
 .tab-badge {
   font-size: 10px;
   padding: 1px 6px;
   border-radius: 999px;
-  background: #e2d5bd;
-  color: #5c4728;
-  font-weight: 600;
+  background: #17241b;
+  color: var(--gold-runic);
+  font-weight: 700;
+  border: 1px solid var(--border-grimoire);
 }
 
 .filter-tab.active .tab-badge {
-  background: #f7ecd7;
-  color: #8c601c;
-  border: 1px solid var(--mucha-gold-border);
+  background: rgba(163, 230, 53, 0.15);
+  color: var(--potion-green);
+  border-color: var(--potion-green-glow);
 }
 
 .sidebar-controls {
@@ -306,8 +333,8 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: var(--mucha-text-muted);
-  font-family: var(--font-serif);
+  color: var(--text-parchment-dim);
+  font-family: var(--font-runic);
 }
 
 .toggle-label {
@@ -323,35 +350,36 @@ body {
   flex: 1;
   overflow-y: auto;
   padding: 16px;
-  position: relative;
 }
 
 .model-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .model-group-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
-  background: linear-gradient(90deg, #f0e6d2 0%, #faefe0 100%);
-  border: 1px solid var(--mucha-gold-border);
+  padding: 9px 14px;
+  background: linear-gradient(90deg, #17241b 0%, #101a13 100%);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-md);
-  font-family: var(--font-serif);
+  font-family: var(--font-runic);
   font-size: 13.5px;
-  font-weight: 600;
-  color: #4a3824;
+  font-weight: 700;
+  color: var(--gold-runic);
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 1px 3px rgba(194, 153, 83, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 10px;
   transition: all 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
 .model-group-header:hover {
-  background: linear-gradient(90deg, #ebd8ba 0%, #f7ecd7 100%);
-  border-color: var(--mucha-gold);
+  border-color: var(--gold-runic);
+  background: linear-gradient(90deg, #1f3024 0%, #152219 100%);
+  box-shadow: 0 0 10px var(--gold-shadow);
 }
 
 .model-name {
@@ -365,19 +393,19 @@ body {
 
 .issue-count {
   font-size: 11px;
-  font-family: var(--font-display);
+  font-family: var(--font-runic);
   font-weight: 700;
-  color: var(--mucha-amber);
-  background: #fffdf9;
+  color: var(--potion-green);
+  background: #090e0b;
   padding: 2px 8px;
   border-radius: 999px;
-  border: 1px solid var(--mucha-gold-border);
+  border: 1px solid var(--border-grimoire);
 }
 
-/* Mucha Issue Card */
+/* Alchemist Issue Card */
 .issue-card {
-  background: var(--mucha-card-bg);
-  border: 1px solid var(--mucha-gold-dim);
+  background: var(--alch-surface-card);
+  border: 1px solid var(--border-grimoire);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   margin-bottom: 10px;
@@ -386,42 +414,53 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  box-shadow: 0 2px 6px rgba(184, 144, 71, 0.07);
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
-/* Subtle corner flourish effect */
+/* Occult corner flourishes on card */
 .issue-card::before {
   content: "";
   position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: 3px;
-  border: 1px solid transparent;
-  border-radius: calc(var(--radius-md) - 3px);
-  pointer-events: none;
-  transition: all 0.2s ease;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--gold-runic);
+  border-left: 2px solid var(--gold-runic);
+  opacity: 0.6;
+}
+
+.issue-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  border-bottom: 2px solid var(--gold-runic);
+  border-right: 2px solid var(--gold-runic);
+  opacity: 0.6;
 }
 
 .issue-card:hover {
   transform: translateY(-2px);
-  border-color: var(--mucha-gold);
-  box-shadow: 0 6px 14px rgba(194, 153, 83, 0.15);
-}
-
-.issue-card:hover::before {
-  border-color: rgba(212, 178, 111, 0.3);
+  border-color: var(--potion-green-glow);
+  background: var(--alch-surface-hover);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px var(--potion-aura);
 }
 
 .issue-card.selected {
-  background: #fffcf5;
-  border-color: var(--mucha-gold);
-  box-shadow: 0 0 0 1px var(--mucha-gold), 0 6px 18px rgba(194, 153, 83, 0.22);
+  background: var(--alch-surface-active);
+  border-color: var(--potion-green);
+  box-shadow: 0 0 0 1px var(--potion-green), 0 0 20px var(--potion-aura-strong);
 }
 
-.issue-card.selected::before {
-  border-color: rgba(194, 153, 83, 0.5);
+.issue-card.selected::before,
+.issue-card.selected::after {
+  opacity: 1;
+  border-color: var(--potion-green);
 }
 
 .card-top {
@@ -432,22 +471,23 @@ body {
 }
 
 .issue-id-badge {
-  font-family: var(--font-display);
+  font-family: var(--font-runic);
   font-size: 11px;
   font-weight: 700;
-  color: #6b4c1b;
-  background: #f7ecd7;
+  color: var(--potion-green);
+  background: #09120c;
   padding: 2px 7px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--mucha-gold-border);
+  border: 1px solid var(--border-grimoire);
+  box-shadow: inset 0 0 6px rgba(163, 230, 53, 0.1);
   letter-spacing: 0.5px;
 }
 
 .card-title {
-  font-family: var(--font-serif);
-  font-size: 14px;
+  font-family: var(--font-grimoire);
+  font-size: 14.5px;
   font-weight: 600;
-  color: #2b2015;
+  color: var(--text-parchment);
   flex: 1;
   line-height: 1.4;
 }
@@ -459,57 +499,59 @@ body {
   flex-wrap: wrap;
 }
 
-/* Botanical Cameo Badges */
+/* Alchemical Status Badges */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-family: var(--font-serif);
+  gap: 5px;
+  font-family: var(--font-runic);
   font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
+  font-weight: 700;
+  padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid transparent;
-}
-
-.badge.open {
-  background: var(--mucha-amber-light);
-  color: var(--mucha-amber);
-  border-color: var(--mucha-amber-border);
-}
-
-.badge.in_progress {
-  background: #eef4fb;
-  color: #2b5585;
-  border-color: #bad3f0;
-}
-
-.badge.closed {
-  background: var(--mucha-sage-light);
-  color: var(--mucha-sage);
-  border-color: var(--mucha-sage-border);
-}
-
-.badge.source {
-  background: #fcf9f2;
-  color: #695745;
-  border-color: var(--mucha-gold-dim);
-  font-size: 10px;
   letter-spacing: 0.5px;
 }
 
+.badge.open {
+  background: rgba(250, 204, 21, 0.12);
+  color: #fde047;
+  border-color: rgba(250, 204, 21, 0.35);
+  box-shadow: 0 0 8px rgba(250, 204, 21, 0.15);
+}
+
+.badge.in_progress {
+  background: rgba(163, 230, 53, 0.12);
+  color: var(--potion-green);
+  border-color: var(--potion-green-glow);
+  box-shadow: 0 0 10px var(--potion-aura);
+}
+
+.badge.closed {
+  background: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.badge.source {
+  background: #0d1510;
+  color: var(--gold-runic);
+  border-color: var(--gold-border);
+  font-size: 10px;
+}
+
 .badge.archived {
-  background: #eee8dc;
-  color: #8c7e6d;
-  border-color: #d6ccbe;
+  background: #141b16;
+  color: var(--text-parchment-dim);
+  border-color: var(--border-grimoire);
 }
 
 .card-meta {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 11.5px;
-  color: var(--mucha-text-muted);
+  font-size: 12px;
+  color: var(--text-parchment-muted);
 }
 
 .meta-item {
@@ -521,26 +563,30 @@ body {
 /* Detail Area */
 .detail-area {
   flex: 1;
-  background: var(--mucha-parchment);
+  background: var(--alch-bg);
   overflow-y: auto;
-  padding: 32px 42px;
+  padding: 32px 44px;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-/* Decorative Background Aureole (Mucha Halo) */
-.detail-area::before {
-  content: "";
+/* Rotating Alchemy Transmutation Circle (背景魔法陣) */
+.magic-circle-bg {
   position: fixed;
-  right: -80px;
-  bottom: -80px;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  border: 2px dashed rgba(194, 153, 83, 0.12);
+  right: -100px;
+  bottom: -100px;
+  width: 640px;
+  height: 640px;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(194, 153, 83, 0.05) 0%, transparent 70%);
+  opacity: 0.13;
+  animation: rotateCircle 180s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rotateCircle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -549,58 +595,68 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--mucha-text-light);
-  gap: 16px;
+  color: var(--text-parchment-muted);
+  gap: 18px;
   position: relative;
-  z-index: 1;
+  z-index: 5;
 }
 
-.empty-icon-aureole {
-  width: 90px;
-  height: 90px;
+.empty-sigil-altar {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background: radial-gradient(circle, #fffdf8 30%, #f4e7d0 100%);
-  border: 2px solid var(--mucha-gold-border);
+  background: radial-gradient(circle, #1a2a1f 30%, #0d1610 100%);
+  border: 2px solid var(--gold-runic);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--mucha-gold);
-  box-shadow: 0 4px 16px var(--mucha-gold-shadow);
+  color: var(--potion-green);
+  box-shadow: 0 0 25px var(--potion-aura-strong), inset 0 0 15px rgba(163, 230, 53, 0.2);
   position: relative;
 }
 
-/* Detail Content */
+/* Detail Container */
 .detail-container {
-  max-width: 920px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
-/* Mucha Ornate Card */
+/* Alchemist Grimoire Card */
 .detail-header-card {
-  background: var(--mucha-card-bg);
-  border: 2px solid var(--mucha-gold-border);
+  background: linear-gradient(180deg, #142018 0%, #0e1711 100%);
+  border: 2px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 26px 28px;
-  box-shadow: 0 8px 24px var(--mucha-gold-shadow);
+  padding: 26px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-shadow);
   position: relative;
   overflow: hidden;
 }
 
-/* Corner Filigree Borders */
+/* Medieval corner brackets */
 .detail-header-card::before {
   content: "";
   position: absolute;
   top: 5px;
   left: 5px;
-  right: 5px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid var(--gold-runic);
+  border-left: 2px solid var(--gold-runic);
+}
+
+.detail-header-card::after {
+  content: "";
+  position: absolute;
   bottom: 5px;
-  border: 1px solid var(--mucha-gold-dim);
-  border-radius: calc(var(--radius-lg) - 5px);
-  pointer-events: none;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  border-bottom: 2px solid var(--gold-runic);
+  border-right: 2px solid var(--gold-runic);
 }
 
 .detail-header-top {
@@ -608,133 +664,126 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .detail-title {
-  font-family: var(--font-serif);
-  font-size: 23px;
+  font-family: var(--font-decorative);
+  font-size: 24px;
   font-weight: 700;
-  color: #2b1f13;
+  color: #fffaf0;
   line-height: 1.35;
-  letter-spacing: -0.2px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .detail-desc {
-  font-size: 14.5px;
-  color: #4a3c2e;
-  line-height: 1.7;
+  font-size: 15px;
+  color: var(--text-parchment);
+  line-height: 1.8;
   white-space: pre-wrap;
-  background: #fbf7ee;
-  padding: 14px 18px;
+  background: rgba(9, 14, 11, 0.7);
+  padding: 16px 20px;
   border-radius: var(--radius-md);
-  border-left: 4px solid var(--mucha-gold);
-  border-top: 1px solid var(--mucha-gold-dim);
-  border-right: 1px solid var(--mucha-gold-dim);
-  border-bottom: 1px solid var(--mucha-gold-dim);
+  border-left: 4px solid var(--potion-green);
+  border-top: 1px solid var(--border-grimoire);
+  border-right: 1px solid var(--border-grimoire);
+  border-bottom: 1px solid var(--border-grimoire);
   margin-top: 14px;
-  position: relative;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 /* Info Grid */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 16px;
 }
 
 .info-card {
-  background: var(--mucha-card-bg);
-  border: 1px solid var(--mucha-gold-border);
+  background: var(--alch-surface-card);
+  border: 1px solid var(--border-grimoire);
   border-radius: var(--radius-md);
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  box-shadow: 0 2px 8px var(--mucha-gold-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   position: relative;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .info-card:hover {
   transform: translateY(-2px);
-  border-color: var(--mucha-gold);
+  border-color: var(--gold-dim);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 10px var(--potion-aura);
 }
 
 .info-label {
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--mucha-text-muted);
-  letter-spacing: 0.6px;
+  font-family: var(--font-runic);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--gold-runic);
+  letter-spacing: 1px;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .info-value {
-  font-family: var(--font-serif);
-  font-size: 14.5px;
+  font-family: var(--font-grimoire);
+  font-size: 15px;
   font-weight: 600;
-  color: #2e2317;
+  color: var(--text-parchment);
   word-break: break-all;
 }
 
 .info-code {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  background: #f5eedf;
-  padding: 3px 8px;
+  background: #0a110d;
+  padding: 3px 9px;
   border-radius: 4px;
-  font-size: 13px;
-  color: #3b2812;
-  border: 1px solid var(--mucha-gold-dim);
+  font-size: 13.5px;
+  color: var(--potion-green);
+  border: 1px solid var(--potion-green-deep);
+  box-shadow: 0 0 8px rgba(163, 230, 53, 0.15);
   display: inline-block;
 }
 
-/* Screenshot Exhibition Frame */
+/* Screenshot Frame (黑曜石鏡像) */
 .screenshot-section {
-  background: var(--mucha-card-bg);
-  border: 2px solid var(--mucha-gold-border);
+  background: var(--alch-surface-card);
+  border: 2px solid var(--gold-border);
   border-radius: var(--radius-lg);
   padding: 24px 28px;
-  box-shadow: 0 8px 24px var(--mucha-gold-shadow);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   gap: 16px;
   position: relative;
 }
 
-.screenshot-section::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 1px solid var(--mucha-gold-dim);
-  border-radius: calc(var(--radius-lg) - 5px);
-  pointer-events: none;
-}
-
 .screenshot-header {
-  font-family: var(--font-serif);
+  font-family: var(--font-runic);
   font-size: 15px;
   font-weight: 700;
-  color: #3a2a19;
+  color: var(--gold-runic);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  letter-spacing: 0.8px;
 }
 
 .screenshot-img-wrapper {
-  background: #181c20;
+  background: #050806;
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--mucha-gold-border);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--border-grimoire);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .screenshot-img {
@@ -745,15 +794,15 @@ body {
 
 /* Action Toolbar */
 .action-toolbar {
-  background: linear-gradient(180deg, #fffdf8 0%, #f6eee0 100%);
-  border: 2px solid var(--mucha-gold-border);
+  background: linear-gradient(180deg, #152219 0%, #0d1610 100%);
+  border: 2px solid var(--gold-border);
   border-radius: var(--radius-lg);
   padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  box-shadow: 0 4px 16px var(--mucha-gold-shadow);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
 }
 
 .status-buttons {
@@ -761,71 +810,81 @@ body {
   gap: 10px;
 }
 
-/* Mucha Style Buttons */
+/* Alchemist Style Buttons */
 .btn {
-  border: 1px solid var(--mucha-gold-border);
-  background: linear-gradient(180deg, #ffffff 0%, #fdf8ee 100%);
-  color: #423220;
+  border: 1px solid var(--gold-border);
+  background: linear-gradient(180deg, #1b291f 0%, #111a14 100%);
+  color: var(--text-parchment);
   padding: 8px 16px;
   border-radius: var(--radius-md);
-  font-family: var(--font-serif);
+  font-family: var(--font-runic);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   transition: all 0.2s ease;
   user-select: none;
-  box-shadow: 0 1px 3px rgba(184, 144, 71, 0.12);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.btn:hover {
-  background: #fbf0dc;
-  border-color: var(--mucha-gold);
+.btn:hover:not(:disabled) {
+  background: linear-gradient(180deg, #24382a 0%, #18251d 100%);
+  border-color: var(--gold-runic);
+  color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(184, 144, 71, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 10px var(--gold-shadow);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #c99e52 0%, #a67b32 100%);
+  background: linear-gradient(180deg, #4d7c0f 0%, #365314 100%);
   color: #ffffff;
-  border-color: #8c6422;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 6px rgba(166, 123, 50, 0.35);
+  border-color: var(--potion-green-glow);
+  box-shadow: 0 0 12px var(--potion-aura-strong);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.btn-primary:hover {
-  background: linear-gradient(180deg, #d9af63 0%, #b88a3d 100%);
-  border-color: #7a541a;
-  box-shadow: 0 4px 12px rgba(166, 123, 50, 0.45);
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, #65a30d 0%, #3f6212 100%);
+  border-color: var(--potion-green);
+  box-shadow: 0 0 18px var(--potion-green-glow);
 }
 
 .btn-open {
-  background: #fff8eb;
-  color: #9c671b;
-  border-color: #f7d599;
+  background: rgba(250, 204, 21, 0.08);
+  color: #fde047;
+  border-color: rgba(250, 204, 21, 0.35);
 }
-.btn-open:hover {
-  background: #faedce;
+.btn-open:hover:not(:disabled) {
+  background: rgba(250, 204, 21, 0.2);
+  border-color: #fde047;
 }
 
 .btn-prog {
-  background: #eef5fc;
-  color: #275282;
-  border-color: #bcd5f2;
+  background: rgba(163, 230, 53, 0.1);
+  color: var(--potion-green);
+  border-color: var(--potion-green-glow);
 }
-.btn-prog:hover {
-  background: #ddeafd;
+.btn-prog:hover:not(:disabled) {
+  background: rgba(163, 230, 53, 0.22);
+  border-color: var(--potion-green);
+  box-shadow: 0 0 12px var(--potion-aura);
 }
 
 .btn-closed {
-  background: #edf6ef;
-  color: #2e663a;
-  border-color: #b7ddbe;
+  background: rgba(56, 189, 248, 0.08);
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.35);
 }
-.btn-closed:hover {
-  background: #dbeef0;
+.btn-closed:hover:not(:disabled) {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: #7dd3fc;
 }
 
 /* Modal */
@@ -835,43 +894,44 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(44, 33, 20, 0.55);
-  backdrop-filter: blur(5px);
+  background: rgba(5, 8, 6, 0.75);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 60;
+  z-index: 70;
   animation: fadeIn 0.2s ease;
 }
 
 .modal-content {
-  background: var(--mucha-card-bg);
+  background: #111a13;
   width: 90%;
-  max-width: 540px;
+  max-width: 550px;
   border-radius: var(--radius-lg);
-  box-shadow: 0 16px 36px rgba(44, 33, 20, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px var(--potion-aura-strong);
   overflow: hidden;
-  border: 2px solid var(--mucha-gold);
+  border: 2px solid var(--gold-runic);
   position: relative;
 }
 
 .modal-header {
   padding: 20px 26px;
-  background: linear-gradient(180deg, #fffdf8 0%, #f6eee0 100%);
-  border-bottom: 1px solid var(--mucha-gold-border);
+  background: linear-gradient(180deg, #18261c 0%, #101a13 100%);
+  border-bottom: 1px solid var(--border-grimoire);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .modal-title {
-  font-family: var(--font-serif);
-  font-size: 18px;
+  font-family: var(--font-decorative);
+  font-size: 19px;
   font-weight: 700;
-  color: #3b2a18;
+  color: #fff9ea;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  letter-spacing: 1px;
 }
 
 .modal-body {
@@ -879,6 +939,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background: #0d1510;
 }
 
 .form-group {
@@ -888,34 +949,35 @@ body {
 }
 
 .form-label {
-  font-family: var(--font-serif);
-  font-size: 13px;
-  font-weight: 600;
-  color: #4a3a29;
+  font-family: var(--font-runic);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--gold-runic);
+  letter-spacing: 0.8px;
 }
 
 .form-input, .form-textarea {
   width: 100%;
-  padding: 9px 12px;
+  padding: 10px 14px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--mucha-gold-border);
-  font-size: 13.5px;
-  font-family: inherit;
-  background: #ffffff;
-  color: var(--mucha-text);
+  border: 1px solid var(--border-grimoire);
+  font-size: 14px;
+  font-family: var(--font-grimoire);
+  background: #080c09;
+  color: var(--text-parchment);
   transition: all 0.2s ease;
 }
 
 .form-input:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--mucha-gold);
-  box-shadow: 0 0 0 3px var(--mucha-gold-shadow);
+  border-color: var(--potion-green-glow);
+  box-shadow: 0 0 12px var(--potion-aura);
 }
 
 .modal-footer {
   padding: 18px 26px;
-  background: #fbf7ee;
-  border-top: 1px solid var(--mucha-gold-border);
+  background: #0e1611;
+  border-top: 1px solid var(--border-grimoire);
   display: flex;
   justify-content: flex-end;
   gap: 12px;
