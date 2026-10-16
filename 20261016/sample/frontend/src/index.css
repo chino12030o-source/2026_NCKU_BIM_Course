@@ -1,47 +1,41 @@
 :root {
-  /* Medieval Alchemist & Potion Atelier Color System */
-  --alch-bg: #090e0b;
-  --alch-surface: #101712;
-  --alch-surface-card: #152019;
-  --alch-surface-hover: #1c2b22;
-  --alch-surface-active: #22352a;
+  /* Potion Craft: Alchemist Simulator Palette */
+  --pc-bg: #e5d5b1;
+  --pc-bg-dark: #d3be92;
+  --pc-parchment: #f4ecda;
+  --pc-parchment-light: #faf5e9;
+  --pc-parchment-card: #eee2c9;
+  --pc-parchment-hover: #f9f3e4;
+  --pc-parchment-active: #fffaf0;
 
-  /* Yellow-Green Potion Glow (螢光黃綠 / 藥水光輝) */
-  --potion-green: #bef264;
-  --potion-green-bright: #d9f99d;
-  --potion-green-glow: #a3e635;
-  --potion-green-deep: #4d7c0f;
-  --potion-aura: rgba(163, 230, 53, 0.18);
-  --potion-aura-strong: rgba(190, 242, 100, 0.35);
+  /* Ink Linework */
+  --pc-ink-dark: #341e0f;
+  --pc-ink-border: #442a17;
+  --pc-ink-muted: #6b4c33;
+  --pc-ink-dim: #94755a;
 
-  /* Medieval Runic Gold & Brass (中世紀古金 / 煉金黃銅) */
-  --gold-runic: #d4af37;
-  --gold-bright: #fde047;
-  --gold-dim: #997b24;
-  --gold-border: #5c4714;
-  --gold-shadow: rgba(212, 175, 55, 0.15);
+  /* Potion Craft Herbal Pigments */
+  --pc-green-moss: #56784d;
+  --pc-green-light: #739967;
+  --pc-green-dark: #3b5734;
 
-  /* Grimoire Parchment Text */
-  --text-parchment: #f2ebd9;
-  --text-parchment-muted: #a39985;
-  --text-parchment-dim: #716856;
+  --pc-amber-gold: #c99339;
+  --pc-amber-light: #e5b35c;
+  --pc-amber-dark: #8c5d18;
 
-  /* Border Sigils */
-  --border-grimoire: #27372d;
-  --border-gold-accent: #806323;
+  --pc-wood-brown: #6b4425;
+  --pc-wood-dark: #452b16;
 
-  /* Status Colors */
-  --status-raw: #facc15;
-  --status-distill: #a3e635;
-  --status-transmute: #38bdf8;
+  --pc-madder-red: #8f3e3e;
+  --pc-teal-celadon: #4b7871;
 
-  --font-decorative: "Cinzel Decorative", "Cinzel", "Noto Serif TC", serif;
-  --font-runic: "Cinzel", "Noto Serif TC", serif;
-  --font-grimoire: "Noto Serif TC", Georgia, serif;
+  /* Fonts */
+  --font-medieval: "MedievalSharp", "Cinzel", "Noto Serif TC", Georgia, serif;
+  --font-serif: "Noto Serif TC", "Cinzel", Georgia, serif;
 
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
 }
 
 * {
@@ -51,170 +45,167 @@
 }
 
 body {
-  font-family: var(--font-grimoire);
-  background-color: var(--alch-bg);
-  color: var(--text-parchment);
+  font-family: var(--font-serif);
+  background-color: var(--pc-bg);
+  color: var(--pc-ink-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* Authentic aged parchment paper texture */
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(163, 230, 53, 0.06) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(16, 23, 18, 0.8) 0%, #090e0b 100%);
+    radial-gradient(circle at 50% 30%, rgba(255, 250, 240, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 85% 85%, rgba(140, 93, 24, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 15% 90%, rgba(86, 120, 77, 0.07) 0%, transparent 45%),
+    linear-gradient(180deg, #eaddc0 0%, #ddcaa2 100%);
+  background-attachment: fixed;
 }
 
-/* Runic Glowing Scrollbars */
+/* Custom Scrollbars: Medieval Stamped Ribbon */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 9px;
+  height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--alch-bg);
-  border-left: 1px solid var(--border-grimoire);
+  background: #ded0ab;
+  border-left: 1px solid var(--pc-ink-border);
 }
 ::-webkit-scrollbar-thumb {
-  background: #283a2f;
-  border-radius: 999px;
-  border: 1px solid var(--gold-border);
+  background: #bfa97f;
+  border-radius: 4px;
+  border: 1px solid var(--pc-ink-dark);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--potion-green-deep);
-  box-shadow: 0 0 8px var(--potion-green-glow);
+  background: #9b8055;
 }
 
-/* App Shell */
+/* Outer Botanical Vine Border Frame (like in Potion Craft screen frame) */
 .app-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  background: var(--alch-bg);
   position: relative;
+  border: 6px solid #4a301c;
+  outline: 2px solid #9c7340;
+  outline-offset: -4px;
+  background: var(--pc-bg);
 }
 
-/* Header: Alchemist Atelier */
+/* ── Top Header Navigation Bar ── */
 .top-navbar {
-  height: 74px;
-  background: linear-gradient(180deg, #141f17 0%, #0d1510 100%);
-  border-bottom: 2px solid var(--gold-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(163, 230, 53, 0.08);
+  height: 72px;
+  background: linear-gradient(180deg, #ecdcb7 0%, #e0cda1 100%);
+  border-bottom: 2px solid var(--pc-ink-dark);
+  box-shadow: 0 3px 8px rgba(68, 42, 23, 0.15), inset 0 -2px 0 #9c7340;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 24px;
   flex-shrink: 0;
   position: relative;
-  z-index: 30;
+  z-index: 20;
 }
 
-/* Runic border accent */
+/* Hand-carved header ribbon outline */
 .top-navbar::after {
   content: "";
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 0;
   right: 0;
   height: 2px;
   background: repeating-linear-gradient(
     90deg,
-    var(--gold-runic) 0,
-    var(--gold-runic) 8px,
-    var(--potion-green-glow) 8px,
-    var(--potion-green-glow) 12px,
-    transparent 12px,
-    transparent 20px
+    #56784d 0px,
+    #56784d 14px,
+    #c99339 14px,
+    #c99339 20px,
+    #442a17 20px,
+    #442a17 22px
   );
-  opacity: 0.85;
+  opacity: 0.6;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
-.brand-sigil {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #213326 20%, #101a13 100%);
-  border: 2px solid var(--gold-runic);
-  box-shadow: 0 0 14px var(--potion-aura-strong), inset 0 0 8px rgba(163, 230, 53, 0.3);
+.brand-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  background: #faf3e1;
+  border: 2px solid var(--pc-ink-dark);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 0 var(--pc-ink-dark), inset 0 0 8px rgba(201, 147, 57, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--potion-green);
-  position: relative;
+  color: var(--pc-ink-dark);
 }
 
 .brand-title {
-  font-family: var(--font-decorative);
-  font-size: 20px;
+  font-family: var(--font-medieval);
+  font-size: 21px;
   font-weight: 700;
-  color: #fff9ea;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.brand-subtitle {
-  font-size: 11.5px;
-  color: var(--potion-green);
-  font-family: var(--font-runic);
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-shadow: 0 0 8px rgba(163, 230, 53, 0.3);
+  color: var(--pc-ink-dark);
+  letter-spacing: 0.8px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .brand-badge {
-  font-family: var(--font-runic);
-  font-size: 10px;
-  background: rgba(163, 230, 53, 0.12);
-  color: var(--potion-green);
-  padding: 2px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--potion-green-glow);
-  box-shadow: 0 0 8px var(--potion-aura);
-  letter-spacing: 0.8px;
+  font-family: var(--font-medieval);
+  font-size: 11px;
+  background: #e8d7ae;
+  color: #4a2e16;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--pc-ink-border);
+  box-shadow: 0 1px 0 var(--pc-ink-dark);
   font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: var(--pc-ink-muted);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .status-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  font-family: var(--font-runic);
-  color: var(--potion-green);
-  background: rgba(16, 26, 18, 0.9);
-  border: 1px solid var(--potion-green-deep);
-  padding: 6px 14px;
-  border-radius: 999px;
-  box-shadow: inset 0 0 8px rgba(163, 230, 53, 0.15), 0 0 10px rgba(163, 230, 53, 0.1);
-  letter-spacing: 0.5px;
+  font-size: 12.5px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--pc-green-dark);
+  background: #e6edd9;
+  border: 1.5px solid var(--pc-green-moss);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 var(--pc-green-dark), inset 0 0 6px rgba(86, 120, 77, 0.15);
 }
 
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--potion-green);
-  box-shadow: 0 0 8px var(--potion-green), 0 0 14px var(--potion-green-glow);
-  animation: pulsePotion 2s infinite ease-in-out;
+  background: var(--pc-green-moss);
+  border: 1px solid var(--pc-green-dark);
 }
 
-@keyframes pulsePotion {
-  0%, 100% { opacity: 0.8; transform: scale(0.95); }
-  50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px var(--potion-green-bright); }
-}
-
-/* Main Layout */
+/* ── Main Layout ── */
 .main-layout {
   display: flex;
   flex: 1;
@@ -222,28 +213,42 @@ body {
   position: relative;
 }
 
-/* Sidebar: Grimoire Index */
+/* ── Left Sidebar (Potion Craft Inventory Panel Style) ── */
 .sidebar {
-  width: 400px;
-  background: linear-gradient(180deg, #101813 0%, #0b110d 100%);
-  border-right: 2px solid var(--gold-border);
+  width: 410px;
+  background: linear-gradient(180deg, #eee3c8 0%, #e2d1a8 100%);
+  border-right: 2px solid var(--pc-ink-dark);
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.6);
   position: relative;
   z-index: 10;
+  box-shadow: 3px 0 10px rgba(52, 30, 15, 0.1);
+}
+
+/* Inner fine border */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 4px;
+  bottom: 0;
+  width: 1px;
+  background: #b89c6d;
+  pointer-events: none;
 }
 
 .sidebar-header {
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--border-grimoire);
+  padding: 16px 18px;
+  border-bottom: 2px solid var(--pc-ink-dark);
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  background: rgba(13, 20, 15, 0.85);
+  gap: 12px;
+  background: #f1e6cd;
+  box-shadow: inset 0 -2px 0 rgba(184, 156, 109, 0.5);
 }
 
+/* Search Box: Medieval Ink Scroll */
 .search-box {
   position: relative;
   width: 100%;
@@ -251,81 +256,81 @@ body {
 
 .search-input {
   width: 100%;
-  padding: 9px 12px 9px 38px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-grimoire);
-  font-size: 13px;
-  font-family: var(--font-grimoire);
-  background: #090e0b;
-  color: var(--text-parchment);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-  transition: all 0.25s ease;
+  padding: 8px 12px 8px 36px;
+  border-radius: var(--radius-sm);
+  border: 1.8px solid var(--pc-ink-dark);
+  font-size: 13.5px;
+  font-family: var(--font-serif);
+  background: #faf6ea;
+  color: var(--pc-ink-dark);
+  box-shadow: inset 0 2px 4px rgba(68, 42, 23, 0.1), 0 1px 0 #fff;
+  transition: all 0.2s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--potion-green-glow);
-  box-shadow: 0 0 12px var(--potion-aura-strong), inset 0 0 6px rgba(163, 230, 53, 0.2);
+  background: #ffffff;
+  border-color: var(--pc-amber-dark);
+  box-shadow: 0 0 0 2px rgba(201, 147, 57, 0.3), inset 0 1px 2px rgba(68, 42, 23, 0.1);
 }
 
 .search-icon {
   position: absolute;
-  left: 12px;
+  left: 11px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--gold-runic);
+  color: var(--pc-ink-muted);
 }
 
-/* Runic Filter Tabs */
+/* Potion Craft Tab Buttons (Like Inventory Category Ribbon Tabs) */
 .filter-tabs {
   display: flex;
-  background: #0b120d;
+  background: #ded0ab;
   padding: 3px;
-  border-radius: var(--radius-md);
-  gap: 2px;
-  border: 1px solid var(--border-grimoire);
+  border-radius: var(--radius-sm);
+  gap: 3px;
+  border: 1.5px solid var(--pc-ink-dark);
+  box-shadow: inset 0 1px 3px rgba(68, 42, 23, 0.2);
 }
 
 .filter-tab {
   flex: 1;
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
-  padding: 7px 4px;
-  font-size: 12px;
-  font-family: var(--font-runic);
-  font-weight: 600;
-  color: var(--text-parchment-muted);
-  border-radius: var(--radius-sm);
+  padding: 6px 3px;
+  font-size: 12.5px;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--pc-ink-muted);
+  border-radius: 3px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  user-select: none;
 }
 
 .filter-tab.active {
-  background: linear-gradient(180deg, #1c2b20 0%, #131d16 100%);
-  color: var(--potion-green);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5), inset 0 0 6px var(--potion-aura);
-  border: 1px solid var(--gold-border);
-  text-shadow: 0 0 8px var(--potion-aura);
+  background: #faf5e7;
+  color: var(--pc-ink-dark);
+  border-color: var(--pc-ink-border);
+  box-shadow: 0 2px 0 var(--pc-ink-dark);
 }
 
 .tab-badge {
   font-size: 10px;
-  padding: 1px 6px;
-  border-radius: 999px;
-  background: #17241b;
-  color: var(--gold-runic);
-  font-weight: 700;
-  border: 1px solid var(--border-grimoire);
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #dfcca2;
+  color: var(--pc-ink-dark);
+  font-weight: 800;
+  border: 1px solid var(--pc-ink-border);
 }
 
 .filter-tab.active .tab-badge {
-  background: rgba(163, 230, 53, 0.15);
-  color: var(--potion-green);
-  border-color: var(--potion-green-glow);
+  background: #e8d7b0;
 }
 
 .sidebar-controls {
@@ -333,8 +338,8 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: var(--text-parchment-dim);
-  font-family: var(--font-runic);
+  color: var(--pc-ink-muted);
+  font-weight: 600;
 }
 
 .toggle-label {
@@ -345,41 +350,43 @@ body {
   user-select: none;
 }
 
-/* Issues Scroll Area */
+.toggle-label input[type="checkbox"] {
+  accent-color: var(--pc-green-moss);
+}
+
+/* ── Issues List Scroll Area ── */
 .issues-scroll-area {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  padding: 14px 16px;
 }
 
 .model-group {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
+/* Carved Oak Model Header */
 .model-group-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 9px 14px;
-  background: linear-gradient(90deg, #17241b 0%, #101a13 100%);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-md);
-  font-family: var(--font-runic);
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #ecdcb9 0%, #dec99d 100%);
+  border: 1.8px solid var(--pc-ink-dark);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-medieval);
   font-size: 13.5px;
   font-weight: 700;
-  color: var(--gold-runic);
+  color: var(--pc-ink-dark);
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  margin-bottom: 10px;
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
+  box-shadow: 0 2px 0 var(--pc-ink-dark), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+  transition: all 0.15s ease;
 }
 
 .model-group-header:hover {
-  border-color: var(--gold-runic);
-  background: linear-gradient(90deg, #1f3024 0%, #152219 100%);
-  box-shadow: 0 0 10px var(--gold-shadow);
+  background: linear-gradient(180deg, #f4e8cd 0%, #ebd7af 100%);
 }
 
 .model-name {
@@ -393,101 +400,95 @@ body {
 
 .issue-count {
   font-size: 11px;
-  font-family: var(--font-runic);
+  font-family: var(--font-medieval);
   font-weight: 700;
-  color: var(--potion-green);
-  background: #090e0b;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--border-grimoire);
+  color: var(--pc-ink-dark);
+  background: #faf4e4;
+  padding: 1px 7px;
+  border-radius: 3px;
+  border: 1px solid var(--pc-ink-dark);
 }
 
-/* Alchemist Issue Card */
+/* ── Potion Craft Style Specimen Card (議題卡片) ── */
 .issue-card {
-  background: var(--alch-surface-card);
-  border: 1px solid var(--border-grimoire);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  margin-bottom: 10px;
+  background: var(--pc-parchment-card);
+  border: 1.8px solid var(--pc-ink-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 9px;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.18s ease;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+  gap: 8px;
+  box-shadow: 0 2px 0 var(--pc-ink-dark), inset 0 0 10px rgba(184, 156, 109, 0.25);
+  outline: 1px solid transparent;
 }
 
-/* Occult corner flourishes on card */
+/* Corner bracket engraving on cards */
 .issue-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-top: 2px solid var(--gold-runic);
-  border-left: 2px solid var(--gold-runic);
+  top: 3px;
+  left: 3px;
+  width: 5px;
+  height: 5px;
+  border-top: 1px solid var(--pc-ink-muted);
+  border-left: 1px solid var(--pc-ink-muted);
   opacity: 0.6;
 }
 
 .issue-card::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 6px;
-  height: 6px;
-  border-bottom: 2px solid var(--gold-runic);
-  border-right: 2px solid var(--gold-runic);
+  bottom: 3px;
+  right: 3px;
+  width: 5px;
+  height: 5px;
+  border-bottom: 1px solid var(--pc-ink-muted);
+  border-right: 1px solid var(--pc-ink-muted);
   opacity: 0.6;
 }
 
 .issue-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--potion-green-glow);
-  background: var(--alch-surface-hover);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 0 14px var(--potion-aura);
+  background: var(--pc-parchment-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 var(--pc-ink-dark), 0 5px 10px rgba(68, 42, 23, 0.12);
 }
 
 .issue-card.selected {
-  background: var(--alch-surface-active);
-  border-color: var(--potion-green);
-  box-shadow: 0 0 0 1px var(--potion-green), 0 0 20px var(--potion-aura-strong);
-}
-
-.issue-card.selected::before,
-.issue-card.selected::after {
-  opacity: 1;
-  border-color: var(--potion-green);
+  background: var(--pc-parchment-active);
+  border-color: var(--pc-ink-dark);
+  outline: 2px solid var(--pc-amber-dark);
+  outline-offset: -3px;
+  box-shadow: 0 3px 0 var(--pc-ink-dark), inset 0 0 12px rgba(201, 147, 57, 0.2);
 }
 
 .card-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
 
 .issue-id-badge {
-  font-family: var(--font-runic);
-  font-size: 11px;
+  font-family: var(--font-medieval);
+  font-size: 11.5px;
   font-weight: 700;
-  color: var(--potion-green);
-  background: #09120c;
-  padding: 2px 7px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-grimoire);
-  box-shadow: inset 0 0 6px rgba(163, 230, 53, 0.1);
-  letter-spacing: 0.5px;
+  color: var(--pc-ink-dark);
+  background: #ebd8af;
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--pc-ink-border);
+  box-shadow: 0 1px 0 var(--pc-ink-dark);
 }
 
 .card-title {
-  font-family: var(--font-grimoire);
+  font-family: var(--font-serif);
   font-size: 14.5px;
-  font-weight: 600;
-  color: var(--text-parchment);
+  font-weight: 700;
+  color: var(--pc-ink-dark);
   flex: 1;
   line-height: 1.4;
 }
@@ -499,94 +500,86 @@ body {
   flex-wrap: wrap;
 }
 
-/* Alchemical Status Badges */
+/* Medieval Stamped Status Badges */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-family: var(--font-runic);
-  font-size: 11px;
+  gap: 4px;
+  font-family: var(--font-serif);
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  border: 1.2px solid transparent;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .badge.open {
-  background: rgba(250, 204, 21, 0.12);
-  color: #fde047;
-  border-color: rgba(250, 204, 21, 0.35);
-  box-shadow: 0 0 8px rgba(250, 204, 21, 0.15);
+  background: #f5e4bd;
+  color: #7a4e0a;
+  border-color: #a8721c;
 }
 
 .badge.in_progress {
-  background: rgba(163, 230, 53, 0.12);
-  color: var(--potion-green);
-  border-color: var(--potion-green-glow);
-  box-shadow: 0 0 10px var(--potion-aura);
+  background: #e4edd7;
+  color: #355e2d;
+  border-color: #5d8a52;
 }
 
 .badge.closed {
-  background: rgba(56, 189, 248, 0.12);
-  color: #7dd3fc;
-  border-color: rgba(56, 189, 248, 0.35);
+  background: #dbebed;
+  color: #2b5d63;
+  border-color: #4b828a;
 }
 
 .badge.source {
-  background: #0d1510;
-  color: var(--gold-runic);
-  border-color: var(--gold-border);
+  background: #ede0c7;
+  color: var(--pc-ink-muted);
+  border-color: #9c805f;
   font-size: 10px;
 }
 
 .badge.archived {
-  background: #141b16;
-  color: var(--text-parchment-dim);
-  border-color: var(--border-grimoire);
+  background: #d8c8a8;
+  color: #634d37;
+  border-color: #8c7356;
 }
 
 .card-meta {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   font-size: 12px;
-  color: var(--text-parchment-muted);
+  color: var(--pc-ink-muted);
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
-/* Detail Area */
+/* ── Right Detail Area (Potion Craft Grimoire / Recipe Book Altar) ── */
 .detail-area {
   flex: 1;
-  background: var(--alch-bg);
+  background: #e8d9b4;
   overflow-y: auto;
-  padding: 32px 44px;
+  padding: 28px 36px;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-/* Rotating Alchemy Transmutation Circle (背景魔法陣) */
-.magic-circle-bg {
-  position: fixed;
-  right: -100px;
-  bottom: -100px;
-  width: 640px;
-  height: 640px;
+/* Decorative woodcut herbal vignette watermark */
+.woodcut-watermark {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 320px;
+  height: 320px;
+  opacity: 0.1;
   pointer-events: none;
-  opacity: 0.13;
-  animation: rotateCircle 180s linear infinite;
   z-index: 1;
-}
-
-@keyframes rotateCircle {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -595,214 +588,215 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--text-parchment-muted);
-  gap: 18px;
+  color: var(--pc-ink-muted);
+  gap: 16px;
   position: relative;
   z-index: 5;
 }
 
-.empty-sigil-altar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #1a2a1f 30%, #0d1610 100%);
-  border: 2px solid var(--gold-runic);
+.empty-icon-aureole {
+  width: 90px;
+  height: 90px;
+  border-radius: var(--radius-lg);
+  background: #faf3e1;
+  border: 2px solid var(--pc-ink-dark);
+  box-shadow: 0 4px 0 var(--pc-ink-dark), inset 0 0 16px rgba(184, 156, 109, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--potion-green);
-  box-shadow: 0 0 25px var(--potion-aura-strong), inset 0 0 15px rgba(163, 230, 53, 0.2);
-  position: relative;
+  color: var(--pc-ink-dark);
 }
 
 /* Detail Container */
 .detail-container {
-  max-width: 960px;
+  max-width: 940px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   position: relative;
   z-index: 5;
 }
 
-/* Alchemist Grimoire Card */
+/* Detail Header: Potion Craft Recipe Manuscript Page */
 .detail-header-card {
-  background: linear-gradient(180deg, #142018 0%, #0e1711 100%);
-  border: 2px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 26px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-shadow);
+  background: var(--pc-parchment-light);
+  border: 2px solid var(--pc-ink-dark);
+  border-radius: var(--radius-md);
+  padding: 24px 28px;
+  box-shadow: 0 4px 0 var(--pc-ink-dark), 0 8px 18px rgba(52, 30, 15, 0.12);
   position: relative;
-  overflow: hidden;
+  outline: 1px solid #c4ab7e;
+  outline-offset: -5px;
 }
 
-/* Medieval corner brackets */
+/* Engraved corners on manuscript */
 .detail-header-card::before {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 16px;
-  height: 16px;
-  border-top: 2px solid var(--gold-runic);
-  border-left: 2px solid var(--gold-runic);
+  top: 7px;
+  left: 7px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--pc-ink-dark);
+  border-left: 2px solid var(--pc-ink-dark);
 }
 
 .detail-header-card::after {
   content: "";
   position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 16px;
-  height: 16px;
-  border-bottom: 2px solid var(--gold-runic);
-  border-right: 2px solid var(--gold-runic);
+  bottom: 7px;
+  right: 7px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid var(--pc-ink-dark);
+  border-right: 2px solid var(--pc-ink-dark);
 }
 
 .detail-header-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
 .detail-title {
-  font-family: var(--font-decorative);
-  font-size: 24px;
-  font-weight: 700;
-  color: #fffaf0;
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--pc-ink-dark);
   line-height: 1.35;
-  letter-spacing: 0.5px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .detail-desc {
-  font-size: 15px;
-  color: var(--text-parchment);
+  font-size: 14.5px;
+  color: var(--pc-ink-dark);
   line-height: 1.8;
   white-space: pre-wrap;
-  background: rgba(9, 14, 11, 0.7);
-  padding: 16px 20px;
-  border-radius: var(--radius-md);
-  border-left: 4px solid var(--potion-green);
-  border-top: 1px solid var(--border-grimoire);
-  border-right: 1px solid var(--border-grimoire);
-  border-bottom: 1px solid var(--border-grimoire);
-  margin-top: 14px;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  background: #f5eedb;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--pc-amber-dark);
+  border-top: 1.2px solid var(--pc-ink-border);
+  border-right: 1.2px solid var(--pc-ink-border);
+  border-bottom: 1.2px solid var(--pc-ink-border);
+  margin-top: 12px;
+  box-shadow: inset 0 1px 3px rgba(68, 42, 23, 0.1);
 }
 
-/* Info Grid */
+/* ── 4 Specimen Info Cards (Apothecary Drawers) ── */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
 }
 
 .info-card {
-  background: var(--alch-surface-card);
-  border: 1px solid var(--border-grimoire);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
+  background: #f7f1e1;
+  border: 1.8px solid var(--pc-ink-dark);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 0 var(--pc-ink-dark);
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .info-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold-dim);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6), 0 0 10px var(--potion-aura);
+  background: #fffdf7;
+  transform: translateY(-1px);
 }
 
 .info-label {
-  font-family: var(--font-runic);
+  font-family: var(--font-serif);
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--gold-runic);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: var(--pc-ink-muted);
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .info-value {
-  font-family: var(--font-grimoire);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-parchment);
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--pc-ink-dark);
   word-break: break-all;
 }
 
 .info-code {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-  background: #0a110d;
-  padding: 3px 9px;
-  border-radius: 4px;
-  font-size: 13.5px;
-  color: var(--potion-green);
-  border: 1px solid var(--potion-green-deep);
-  box-shadow: 0 0 8px rgba(163, 230, 53, 0.15);
+  background: #ede0c3;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--pc-ink-dark);
+  border: 1px solid var(--pc-ink-border);
   display: inline-block;
+  font-weight: 700;
 }
 
-/* Screenshot Frame (黑曜石鏡像) */
+/* ── Screenshot Section (Woodcut Carved Frame) ── */
 .screenshot-section {
-  background: var(--alch-surface-card);
-  border: 2px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 24px 28px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  background: var(--pc-parchment-light);
+  border: 2px solid var(--pc-ink-dark);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  box-shadow: 0 4px 0 var(--pc-ink-dark);
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  position: relative;
+  gap: 14px;
+  outline: 1px solid #c4ab7e;
+  outline-offset: -5px;
 }
 
 .screenshot-header {
-  font-family: var(--font-runic);
-  font-size: 15px;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
   font-weight: 700;
-  color: var(--gold-runic);
+  color: var(--pc-ink-dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  letter-spacing: 0.8px;
 }
 
 .screenshot-img-wrapper {
-  background: #050806;
-  border-radius: var(--radius-md);
+  background: #e5d7b5;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--border-grimoire);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--pc-ink-dark);
+  box-shadow: inset 0 0 16px rgba(68, 42, 23, 0.2);
+  padding: 8px;
 }
 
 .screenshot-img {
   max-width: 100%;
   max-height: 480px;
   object-fit: contain;
+  border: 1px solid var(--pc-ink-border);
+  border-radius: 2px;
 }
 
-/* Action Toolbar */
+/* ── Action Toolbar (Wooden Apothecary Bench) ── */
 .action-toolbar {
-  background: linear-gradient(180deg, #152219 0%, #0d1610 100%);
-  border: 2px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 18px 24px;
+  background: #f7f1e1;
+  border: 2px solid var(--pc-ink-dark);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 0 var(--pc-ink-dark);
+  outline: 1px solid #c4ab7e;
+  outline-offset: -4px;
 }
 
 .status-buttons {
@@ -810,175 +804,174 @@ body {
   gap: 10px;
 }
 
-/* Alchemist Style Buttons */
+/* ── Potion Craft Wooden / Stamped Seal Buttons ── */
 .btn {
-  border: 1px solid var(--gold-border);
-  background: linear-gradient(180deg, #1b291f 0%, #111a14 100%);
-  color: var(--text-parchment);
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-runic);
+  border: 1.8px solid var(--pc-ink-dark);
+  background: linear-gradient(180deg, #faf3e1 0%, #ebd7af 100%);
+  color: var(--pc-ink-dark);
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-serif);
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
+  gap: 7px;
+  transition: all 0.12s ease;
   user-select: none;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2.5px 0 var(--pc-ink-dark);
 }
 
 .btn:hover:not(:disabled) {
-  background: linear-gradient(180deg, #24382a 0%, #18251d 100%);
-  border-color: var(--gold-runic);
-  color: #ffffff;
+  background: linear-gradient(180deg, #fffaf0 0%, #f4e3c3 100%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 10px var(--gold-shadow);
+  box-shadow: 0 3.5px 0 var(--pc-ink-dark);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 0.5px 0 var(--pc-ink-dark);
 }
 
 .btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+  box-shadow: 0 1px 0 var(--pc-ink-dark);
 }
 
+/* Primary Button: Potion Craft Emerald Green */
 .btn-primary {
-  background: linear-gradient(180deg, #4d7c0f 0%, #365314 100%);
-  color: #ffffff;
-  border-color: var(--potion-green-glow);
-  box-shadow: 0 0 12px var(--potion-aura-strong);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, #6c915f 0%, #4b6f3e 100%);
+  color: #fffef8;
+  border-color: #273822;
+  box-shadow: 0 2.5px 0 #273822;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: linear-gradient(180deg, #65a30d 0%, #3f6212 100%);
-  border-color: var(--potion-green);
-  box-shadow: 0 0 18px var(--potion-green-glow);
+  background: linear-gradient(180deg, #7ba36d 0%, #578049 100%);
+  box-shadow: 0 3.5px 0 #273822;
 }
 
+.btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 0.5px 0 #273822;
+}
+
+/* Status Patch Buttons */
 .btn-open {
-  background: rgba(250, 204, 21, 0.08);
-  color: #fde047;
-  border-color: rgba(250, 204, 21, 0.35);
+  background: linear-gradient(180deg, #faeed4 0%, #ecd6aa 100%);
+  color: #7a4e0a;
 }
-.btn-open:hover:not(:disabled) {
-  background: rgba(250, 204, 21, 0.2);
-  border-color: #fde047;
-}
-
 .btn-prog {
-  background: rgba(163, 230, 53, 0.1);
-  color: var(--potion-green);
-  border-color: var(--potion-green-glow);
+  background: linear-gradient(180deg, #ebf4df 0%, #d5e5c3 100%);
+  color: #355e2d;
 }
-.btn-prog:hover:not(:disabled) {
-  background: rgba(163, 230, 53, 0.22);
-  border-color: var(--potion-green);
-  box-shadow: 0 0 12px var(--potion-aura);
-}
-
 .btn-closed {
-  background: rgba(56, 189, 248, 0.08);
-  color: #7dd3fc;
-  border-color: rgba(56, 189, 248, 0.35);
-}
-.btn-closed:hover:not(:disabled) {
-  background: rgba(56, 189, 248, 0.2);
-  border-color: #7dd3fc;
+  background: linear-gradient(180deg, #e4f2f4 0%, #cde2e5 100%);
+  color: #2b5d63;
 }
 
-/* Modal */
+/* ── Modal (Parchment Decree) ── */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(5, 8, 6, 0.75);
-  backdrop-filter: blur(6px);
+  background: rgba(43, 24, 13, 0.6);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 70;
+  z-index: 60;
   animation: fadeIn 0.2s ease;
 }
 
 .modal-content {
-  background: #111a13;
+  background: #fbf7ea;
   width: 90%;
   max-width: 550px;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px var(--potion-aura-strong);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 5px 0 var(--pc-ink-dark);
   overflow: hidden;
-  border: 2px solid var(--gold-runic);
+  border: 2.5px solid var(--pc-ink-dark);
   position: relative;
+  outline: 1px solid #c4ab7e;
+  outline-offset: -5px;
 }
 
 .modal-header {
-  padding: 20px 26px;
-  background: linear-gradient(180deg, #18261c 0%, #101a13 100%);
-  border-bottom: 1px solid var(--border-grimoire);
+  padding: 18px 24px;
+  background: linear-gradient(180deg, #f5ebd5 0%, #e8d9b8 100%);
+  border-bottom: 2px solid var(--pc-ink-dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .modal-title {
-  font-family: var(--font-decorative);
-  font-size: 19px;
-  font-weight: 700;
-  color: #fff9ea;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--pc-ink-dark);
   display: flex;
   align-items: center;
-  gap: 10px;
-  letter-spacing: 1px;
+  gap: 8px;
 }
 
 .modal-body {
-  padding: 26px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background: #0d1510;
+  gap: 15px;
+  background: #fbf7ea;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .form-label {
-  font-family: var(--font-runic);
-  font-size: 12.5px;
+  font-family: var(--font-serif);
+  font-size: 13px;
   font-weight: 700;
-  color: var(--gold-runic);
-  letter-spacing: 0.8px;
+  color: var(--pc-ink-dark);
 }
 
 .form-input, .form-textarea {
   width: 100%;
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-grimoire);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.8px solid var(--pc-ink-dark);
   font-size: 14px;
-  font-family: var(--font-grimoire);
-  background: #080c09;
-  color: var(--text-parchment);
+  font-family: var(--font-serif);
+  background: #faf6ea;
+  color: var(--pc-ink-dark);
+  box-shadow: inset 0 1px 3px rgba(68, 42, 23, 0.1);
   transition: all 0.2s ease;
 }
 
 .form-input:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--potion-green-glow);
-  box-shadow: 0 0 12px var(--potion-aura);
+  background: #ffffff;
+  border-color: var(--pc-amber-dark);
+  box-shadow: 0 0 0 2px rgba(201, 147, 57, 0.3);
 }
 
 .modal-footer {
-  padding: 18px 26px;
-  background: #0e1611;
-  border-top: 1px solid var(--border-grimoire);
+  padding: 16px 24px;
+  background: #f2e4c8;
+  border-top: 2px solid var(--pc-ink-dark);
   display: flex;
   justify-content: flex-end;
   gap: 12px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
